@@ -1,0 +1,23 @@
+---
+title: "plharvey_15_ipynb_rmd"
+author: "Patrick Harvey"
+date: "`r Sys.Date()`"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+library(rmarkdown)
+input = 'plharvey_15.ipynb'
+# output = rmarkdown::convert_ipynb(input, output = with_ext(input, "Rmd"))
+
+nb_rmd = rmarkdown:::convert_ipynb(input)
+```
+
+```{r echo = FALSE}
+cat(rbind('The file',input,'has been converted to an R Markdown document.'))
+```
