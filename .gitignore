@@ -4,7 +4,6 @@
 .Ruserdata
 .DS_Store
 plharvey_15/.DS_Store
-plharvey_15/.DS_Store
 .vscode/settings.json
 telescope.csv
 lattice_n_100.png
@@ -14,3 +13,6 @@ lattice_1.png
 lattice_1.png
 .DS_Store
 .devcontainer/devcontainer.json
+plharvey_20/dataset_s1.tsv
+plharvey_20/Blood_Meridian_McCarthy.txt
+SECURITY.md
