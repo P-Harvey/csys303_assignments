@@ -6,4 +6,5 @@ pandas
 plotly
 seaborn
 requests
-tornado           
+tornado  
+shifterator         
