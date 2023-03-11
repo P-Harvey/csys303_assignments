@@ -1,0 +1,10 @@
+matplotlib
+networkx
+nltk                       
+numpy  
+pandas
+plotly
+seaborn
+requests
+tornado
+pygraphviz

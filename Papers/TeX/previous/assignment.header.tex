@@ -1,0 +1,73 @@
+\begin{center}
+  \raisebox{-22pt}{\includegraphics[width=0.2\textwidth]{pocslogo002.pdf}}~\begin{tabular}{c}
+    \textbf{\coursename}\\
+    \textbf{\fullcoursenumber}\\
+    \textbf{\fullinstitution, \season\ \courseyear}\\
+    %%      \textbf{{\solutionsto}Assignment \assignmentnumtext\ $\bullet$ code name: \codename}
+    \textbf{{\solutionsto}Assignment \assignmentnumtext} \\
+    \textbf{\codename}      
+  \end{tabular}
+\end{center}
+
+\ifthenelse{\not\boolean{solutionsboolean}}
+{
+  {\small
+    %% \textbf{Dispersed:} \outdate, \courseyear.\\
+    \textbf{Due:} \duedate \\
+%%    \textbf{Due:} \duedate, \courseyear.\\
+    %% \textbf{Sections covered:} \sectionscovered.
+%%    \textbf{Relevant clips, episodes, and slides} are listed on the assignment's page:
+    \href{\coursewebsite/assignments/\assignmentnumtext/}{\coursewebsite/assignments/\assignmentnumtext/}\\
+    \textit{Some useful reminders:}\\
+    \textbf{Deliverator:} \myname\ (contact through Teams)\\ %% \myemail
+    \textbf{Assistant Deliverator:} \taname\ (contact through Teams) \\ %% \taemail
+    \textbf{Office:} The Ether \\
+%%    \textbf{Office:} \officelocation \\ 
+    \textbf{Office hours:} \officehours \\
+    \textbf{Course website:} \href{\coursewebsite}{\coursewebsitetext}
+    \textbf{Overleaf:} LaTeX templates and settings for all assignments are
+    available at
+    \url{https://www.overleaf.com/project/631238b0281a33de67fc1c2b}.
+%%    \textbf{Bonus course notes:}
+%%    \href{\coursewebsite/docs/dewhurst-pocs-notes.pdf}{\coursewebsitetext/docs/dewhurst-pocs-notes.pdf}
+  }
+
+\medskip
+
+\hrule
+
+{\small
+All parts are worth 3 points unless marked otherwise.
+Please show all your workingses clearly and list the names of
+others with whom you \sout{conspired} collaborated.
+
+%% Please obey the basic life rule: Never use Excel.
+%% Or any Microsoft product except maybe Xbox (which sadly will likely not help you here). Okay, Teams is not that bad. Back to the point:
+For coding, we recommend you improve your skills with Python, R, and/or Julia. The (evil) Deliverator uses (evil) Matlab.
+
+Graduate students are requested to use \LaTeX\ (or related \TeX\
+variant). If you are new to \LaTeX, please endeavor to submit at least $n$ questions per assignment in \LaTeX, where $n$ is the assignment number.
+
+\textbf{Assignment submission:}
+
+Via Blackboard.
+
+%% \textbf{email submission:}
+%% If Blackboard is not set up:\\
+%% 1. Please send to both the Assistant Deliverator \taname\ via direct message on Teams.\\
+%% 2. PDF only! Please name your file as follows (where the number is to be padded
+%% by a 0 if less than 10 and names are all lowercase):
+%% \texttt{CSYS300assignment\%02d\$firstname-\$lastname.pdf}
+%% as in 
+%%\texttt{CSYS300assignment06michael-palin.pdf}
+
+}
+
+\medskip
+\medskip
+
+\hrule
+
+\medskip
+}
+{} % do nothing

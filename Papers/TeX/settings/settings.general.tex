@@ -1,0 +1,846 @@
+\usepackage{media9}
+
+\usepackage{censor}
+
+
+%% set current time
+\usepackage{datetime}
+%% \yyyymmdddate
+\newtimeformat{mytime}{\twodigit{\THEHOURXII}:\twodigit{\THEMINUTE}}
+\settimeformat{mytime}
+\newdateformat{mydate}{\dayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}, \monthname\ \THEDAY, \THEYEAR}
+\mydate
+
+%% for toggling solutions
+\usepackage{environ}
+
+%% eh
+\newcommand{\pocsvoloneonly}[1]{}
+\newcommand{\pocsvoltwoonly}[1]{}
+
+%% links
+\usepackage{url}
+%% url style
+\urlstyle{same}
+
+%% allow hyphenation for urls with long many-hyphenated strings
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=grey,
+    citecolor=todoblue,
+    filecolor=grey,
+    urlcolor=grey,
+    breaklinks=true,
+}
+
+%% exciting emphasis action
+\usepackage{ulem}
+%% note that to allow linebreaking,
+%% separate words as \dashuline{the\ slithy\ tove};
+%% it may be necessary to format arguments 
+%% in this way (e.g., section headings)
+%% base html for documents (lectures and assignments)
+
+\usepackage{cprotect}
+%% code snippets
+%% http://stackoverflow.com/questions/3175105/how-to-insert-code-into-a-latex-doc
+\usepackage{listings}
+\usepackage[numbered]{matlab-prettifier}
+
+%% showing latex along with output
+%% https://tex.stackexchange.com/questions/110349/any-way-to-show-latex-example-code-and-execute-it
+\usepackage{showexpl}
+
+%% use this for functions:
+%% \begin{lstlisting}[style=Matlab-editor]
+%% \end{lstlisting}\begin{verbatim}
+
+\usepackage{fontawesome}
+
+
+\definecolor{todoblue}{RGB}{0, 91, 187}
+\newcommand{\todo}[1]{\noindent\textcolor{todoblue}{{$\Box$ #1}}}
+
+\newcommand{\wikilink}[1]{\href{#1}{\tc{grey}{\faExternalLink}}}
+\newcommand{\wordwikilink}[2]{\href{#1}{\tc{grey}{\dashuline{#2}~\faExternalLink}}}
+\newcommand{\wordwikilinklong}[2]{\href{#1}{\tc{grey}{\url{#2}~\faExternalLink}}}
+
+
+
+\newcommand{\Prob}{\mathbf{Pr}}
+
+\newcommand{\degree}{\, \circ}
+\newcommand{\tempf}[1]{${#1}^{\degree}F$}
+\newcommand{\tempc}[1]{${#1}^{\degree}C$}
+
+\newcommand{\avg}[1]{\left\langle#1\right\rangle}
+\newcommand{\tavg}[1]{\langle#1\rangle}
+
+\newcommand{\LavgHa}[2]{\tavg{L_{#1,#2}}}
+\newcommand{\LavgHaN}[2]{\tavg{L_{#1,#2}}}
+\newcommand{\Lavg}{\tavg{L}}
+
+\newcommand{\sindex}[1]{}
+\newcommand{\nindex}[1]{}
+
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\www}[1]{\url{#1}}
+\newcommand{\req}[1]{(\ref{#1})}
+\newcommand{\Req}[1]{Eq.~(\ref{#1})}
+
+
+\newcommand{\yes}{}
+\newcommand{\no}{}
+\newcommand{\tbf}{\textbf}
+\newcommand{\tit}{\textit}
+
+\newcommand{\stirlingnumber}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+
+
+\newcommand{\dee}[1]{\mbox{d}#1}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\partialdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\partialdiffsq}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pdiffsq}[2]{\frac{\partial^2 #1}{{\partial #2}^2}}
+\newcommand{\diff}[2]{\frac{{\rm d}#1}{{\rm d}#2}}
+\newcommand{\diffsq}[2]{\frac{{\rm d}^{2}#1}{{\rm d} {#2}^2}}
+\newcommand{\tdiff}[2]{\mbox{d} #1/\mbox{d} #2}
+\newcommand{\tdiffsq}[2]{\mbox{d}^{2} #1/\mbox{d} {#2}^2}
+\newcommand{\tpdiff}[2]{\partial #1/\partial #2}
+\newcommand{\tpdiffsq}[2]{\partial^2 #1/\partial {#2}^2}
+\newcommand{\postdee}[1]{\,\mbox{d}#1}
+
+
+%% binomials
+\newcommand{\mybinom}[2]{\Bigl(\begin{array}{@{}c@{}}#1\\#2\end{array}\Bigr)}
+
+%% half
+\newcommand{\half}{\frac{1}{2}}
+
+
+
+% \newcommand{\avgSL}{\bar{L}_{\rm s}}
+\newcommand{\avgSL}{\tavg{l_{\rm s}}}
+
+
+\newcommand{\fplus}{f_{+}}
+\newcommand{\fminus}{f_{-}}
+\newcommand{\aplus}{a_{+}}
+\newcommand{\aminus}{a_{-}}
+
+
+
+% \newcommand{\kstar}{d^{\ast}}
+% \newcommand{\kstari}{k_i^\ast}
+\newcommand{\kstar}{d^\ast}
+\newcommand{\kstari}{d_i^\ast}
+
+\newcommand{\dstar}{d^\ast}
+\newcommand{\dstari}{d_i^\ast}
+
+\newcommand{\phifix}{{\phi^{\ast}}}
+\newcommand{\phifixc}{{\phi_c^{\ast}}}
+\newcommand{\phifixb}{{\phi_b^{\ast}}}
+
+\newcommand{\Gfun}{G}
+
+
+\newcommand{\dstardist}{g}
+\newcommand{\dosedist}{f}
+\newcommand{\dosedistk}{f^{k\star}}
+
+\newcommand{\erdosrenyi}{Erd\"{o}s-R\'{e}nyi}
+
+\newcommand{\meandegree}{z}
+
+\newcommand{\stateA}{0}
+\newcommand{\stateB}{1}
+
+\newcommand{\phiA}{\phi_0}
+\newcommand{\phiB}{\phi_1}
+
+\newcommand{\phiup}{\phi^{\rm up}}
+\newcommand{\phidown}{\phi^{\rm down}}
+\newcommand{\phiupi}{\phi_i^{\rm up}}
+\newcommand{\phidowni}{\phi_i^{\rm down}}
+
+\newcommand{\phihomog}{\phi_{\rm h}}
+\newcommand{\phiuphomog}{\phi_{\rm h}^{\rm up}}
+
+\newcommand{\vcluster}{\mathcal{V}_{\rm max}}
+\newcommand{\initset}{\mathcal{A}}
+
+\newcommand{\avggroupdeg}{\tavg{k_{\rm group}}}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+
+%% scaling
+
+\newcommand{\xmin}{x_\textnormal{min}}
+\newcommand{\xmax}{x_\textnormal{max}}
+
+
+%% video hints:
+
+\newcommand{\videohint}[2]{
+  \ifthenelse{\boolean{videoboolean}}{
+ \begin{minipage}{1.0\linewidth}
+   \textbf{Hint---}#2:\\
+   \includemedia[
+   width=1\linewidth,height=0.5625\linewidth,
+   activate=pageopen,
+   flashvars={
+     modestbranding=0 % no YT logo in control bar
+     &autoplay=0
+     &fs=1
+     &autohide=1 % controlbar autohide
+     &showinfo=0 % no title and other info before start
+     % &rel=0
+     % &rel=0 % no related videos after end
+   }
+   ]
+   {}
+   {http://www.youtube.com/watch?v=#1}\\
+   Direct link: \url{http://www.youtube.com/watch?v=#1}
+%   {http://www.youtube.com/watch?v=#1?rel=0}\\
+%   Direct link: \url{http://www.youtube.com/watch?v=#1?rel=0}
+   %% \url{http://www.youtube.com/watch?v=#1?rel=0}
+ \end{minipage}
+  }
+  {
+    \textbf{Hint---#2}: \url{http://www.youtube.com/watch?v=#1}
+%%    \textbf{Hint---#2}: \url{http://www.youtube.com/watch?v=#1?rel=0}
+  }
+}
+
+\newcommand{\videohelp}[7]{
+  %% youtube embeds no longer work
+  %% 
+%%   %% #1: video
+%%   %% #2: title
+%%   %% #3: start
+%%   %% #4: end (only works in embed)
+%%   %% #5: video length
+  \ifthenelse{\boolean{videoboolean}}{
+    \begin{minipage}{1.0\linewidth}
+      \textbf{Help---}#2 (runs from #5 to #6, length #7):\\
+      \includemedia[
+      width=1\linewidth,height=0.5625\linewidth,
+      activate=pageopen,
+      flashvars={
+        modestbranding=0 % no YT logo in control bar
+        &autoplay=0
+        &fs=1
+        &autohide=0 % controlbar autohide
+        &showinfo=0 % no title and other info before start
+        &start=#3
+        &end=#4
+%        &rel=0
+        % &rel=0 % no related videos after end
+      }
+      ]
+      {}
+      %% {http://www.youtube.com/watch?v=#1?rel=0&start=#3&end=#4}\\
+      {http://www.youtube.com/watch?v=#1?start=#3&end=#4}\\
+      \tc{grey}{Note: Video embed only works in Adobe Reader. Direct link:}\\
+      \tc{grey}{\url{http://www.youtube.com/watch?v=#1?\&start=#3\&end=#4}}
+%%      \tc{grey}{\url{http://www.youtube.com/watch?v=#1\&rel=0\&start=#3\&end=#4}}
+      %% \url{http://www.youtube.com/watch?v=#1?start=#3&end=#4&rel=0}
+    \end{minipage}
+  }
+  {
+    \textbf{Help---#2} (runs from #5 to #6, length #7): \url{http://www.youtube.com/watch?v=#1?start=#3\&end=#4}
+%%    \textbf{Help---#2} (runs from #5 to #6, length #7): \url{http://www.youtube.com/watch?v=#1\?rel=0\&start=#3\&end=#4}
+  }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% matrices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\m}[1]{\mathbf{#1}}
+
+\newcommand{\colvec}[1]{
+\left[
+  \begin{array}{c}
+    #1
+  \end{array}
+\right]
+}
+
+\newcommand{\rowop}[3]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{#1' =} \\
+      \mbox{#1 -} \\ 
+      \mbox{#2 #3} \\
+    \end{array}
+  }
+}
+
+\newcommand{\rowoptwobytwo}[3]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{#1'} 
+      \mbox{= #1 -}
+      \mbox{#2 #3} \\
+    \end{array}
+  }
+}
+
+\newcommand{\rowopeq}[3]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large =} \\
+      \left\lgroup
+      \mbox{\tiny
+        \begin{tabular}{c}
+          #1' =  \\
+          #1 - #2 #3 \\
+        \end{tabular}
+    }
+      \right\rgroup
+    \end{array}
+  }
+}
+
+\newcommand{\rowswapeq}[2]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\large =} \\
+      \left\lgroup
+      \mbox{\tiny
+          #1 $\leftrightarrow$ #2
+        }
+      \right\rgroup
+    \end{array}
+  }
+}
+
+\newcommand{\rowdiv}[2]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{#1' =} \\
+      \mbox{#1/(#2)} \\ 
+    \end{array}
+  }
+}
+
+\newcommand{\rowdivthreebythree}[3]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{row 1'} = \mbox{row 1/(#1)}\\
+      \mbox{row 2'} = \mbox{row 2/(#2)}\\
+      \mbox{row 3'} = \mbox{row 3/(#3)}\\
+    \end{array}
+  }
+}
+
+
+\newcommand{\rowdivtwobytwo}[2]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{row 1'} = \mbox{row 1/(#1)}\\
+      \mbox{row 2'} = \mbox{row 2/(#2)}\\
+    \end{array}
+  }
+}
+
+\newcommand{\rowdivtwobytwoeq}[2]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large =} \\
+      \mbox{row 1'} = \mbox{row 1/(#1)}\\
+      \mbox{row 2'} = \mbox{row 2/(#2)}\\
+    \end{array}
+  }
+}
+
+\newcommand{\rowdivthreebythreeeqR}[3]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large =} \\
+      \mbox{R1'} = \mbox{R1/(#1)}\\
+      \mbox{R2'} = \mbox{R2/(#2)}\\
+      \mbox{R3'} = \mbox{R3/(#3)}\\
+    \end{array}
+  }
+}
+
+
+\newcommand{\rowdivtwobytwoeqR}[2]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large =} \\
+      \mbox{R1'} = \mbox{R1/(#1)}\\
+      \mbox{R2'} = \mbox{R2/(#2)}\\
+    \end{array}
+  }
+}
+
+
+\newcommand{\rowonediv}[1]{
+  {
+    \scriptsize
+    \begin{array}{c}
+      \mbox{\Large $\leadsto$} \\
+      \mbox{row 1'} = \mbox{row 1/#1}\\
+    \end{array}
+  }
+}
+
+\newcommand{\mymatrix}[2]{
+  \left[
+  \begin{array}{#1}
+    #2
+  \end{array}
+  \right]
+}
+
+%% \newcommand{\matrix}[1]{\mathbf{#1}}
+\newcommand{\textmatrix}[1]{#1}
+
+%% \renewcommand{\m}[1]{\mathbf{#1}}
+
+\newcommand{\Axb}{\textmatrix{A}\vec{x}=\vec{b}}
+\newcommand{\Axzero}{\textmatrix{A}\vec{x}=\vec{0}}
+\newcommand{\A}{\textmatrix{A}}
+\newcommand{\AT}{\textmatrix{A}^{\rm T}}
+\newcommand{\CA}{C(\textmatrix{A})}
+\newcommand{\NA}{N(\textmatrix{A})}
+\newcommand{\CAT}{C(\textmatrix{A}^{\rm T})}
+\newcommand{\NAT}{N(\textmatrix{A}^{\rm T})}
+
+\newcommand{\I}{\textmatrix{I}}
+\newcommand{\R}{\textmatrix{R}}
+
+\newcommand{\augAb}{[\A \, | \, \vec{b} \, ]}
+
+\newcommand{\rref}[1]{\R_{#1}}
+
+\newcommand{\lmat}{\left[
+\begin{array}
+}
+\newcommand{\rmat}{\end{array}
+\right]
+}
+
+
+
+%% girl born on a tuesday problem
+\newcommand{\girl}{G}
+\newcommand{\boy}{B}
+\newcommand{\girltues}{G_{\textnormal{Tue}}}
+
+
+%% entropy
+\newcommand{\Hrenyi}[1]{H^{\textnormal{(R)}}_{#1}}
+\newcommand{\Htsallis}[1]{H^{\textnormal{(T)}}_{#1}}
+%% branching networks
+
+%% river networks
+\newcommand{\rhodd}{\rho_{\rm dd}} % drainage density
+\newcommand{\msl}{\ell} % main stream length
+%% \newcommand{\okell}{{l^{\mbox{\scriptsize{(s)}}}}}
+%% \newcommand{\okellsnum}[1]{l_{#1}^{\mathrm{\, (s)}}}
+\newcommand{\okell}{s}
+\newcommand{\okellsnum}[1]{s_{#1}}
+
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\Tmunu}{T_{\mu,\nu}}
+
+\newcommand{\rpartition}[7]{%
+  #1(#2\!\!#3,#4\!\!#5#6#7)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optimal forks (Murray's law)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rparent}{r_{\textnormal{parent}}}
+\newcommand{\rchilda}{r_{\textnormal{offspring} 1}}
+\newcommand{\rchildb}{r_{\textnormal{offspring} 2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optimal supply networks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rhofac}{\rho_{\textnormal{fac}}}
+\newcommand{\rhopop}{\rho_{\textnormal{pop}}}
+
+%% supply networks
+
+\newcommand{\volume}[1]{\Omega_{d,D}(#1)}
+
+\newcommand{\vnet}{V_{\rm net}}
+
+%% chaotic contagion
+
+\newcommand{\niprob}{q}
+\newcommand{\liprob}{r}
+
+
+%% random biparite networks
+
+\newcommand{\rbone}{\textnormal{\faFilm}}
+\newcommand{\rbtwo}{\textnormal{\faLightbulbO}}
+
+\newcommand{\rboneng}{N_{\rbone}}
+\newcommand{\rbtwong}{N_{\rbtwo}}
+
+\newcommand{\Prboneind}{P^{(\rbone)}_{\textnormal{ind},k}}
+\newcommand{\Prbtwoind}{P^{(\rbtwo)}_{\textnormal{ind},k}}
+
+\newcommand{\Rrboneind}{R^{(\rbone)}_{\textnormal{ind},k}}
+\newcommand{\Rrbtwoind}{R^{(\rbtwo)}_{\textnormal{ind},k}}
+
+\newcommand{\Prboneindplain}{P^{(\rbone)}_{\textnormal{ind}}}
+\newcommand{\Prbtwoindplain}{P^{(\rbtwo)}_{\textnormal{ind}}}
+
+\newcommand{\Rrboneindplain}{R^{(\rbone)}_{\textnormal{ind}}}
+\newcommand{\Rrbtwoindplain}{R^{(\rbtwo)}_{\textnormal{ind}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% happiness
+
+\newcommand{\havg}[1]{h_{\rm avg}(#1)}
+\newcommand{\havgword}[1]{h_{\rm avg}(\textnormal{`#1'})}
+\newcommand{\havgsup}[1]{h_{\rm avg}^{#1}}
+\newcommand{\havgsuparg}[2]{h_{\rm avg}^{#1}(#2)}
+
+\newcommand{\havgfn}{h_{\rm avg}}
+\newcommand{\hstdfn}{h_{\textnormal{std}}}
+
+\newcommand{\havgfnamb}{h_{\rm avg}^{\rm (amb)}}
+\newcommand{\havgfnnorm}{h_{\rm avg}^{\rm (norm)}}
+
+
+\newcommand{\Tref}{T_{\textnormal{ref}}}
+\newcommand{\Tcomp}{T_{\textnormal{comp}}}
+
+\newcommand{\deltahw}{\delta_{h}(w)}
+\newcommand{\deltapw}{\delta_{p}(w)}
+
+
+
+%% contagion
+\newcommand{\vuln}{\textnormal{vuln}}
+\newcommand{\trig}{\textnormal{trig}}
+\newcommand{\Svuln}{S_{\textnormal{vuln}}}
+\newcommand{\thetavuln}{\theta_{\textnormal{vuln}}}
+\newcommand{\Strig}{S_{\textnormal{trig}}}
+\newcommand{\Ptrig}{P_{\textnormal{trig}}}
+\newcommand{\Sgc}{S_{\textnormal{gc}}}
+
+\newcommand{\emn}{e_{\mu\nu}}
+\newcommand{\emm}{e_{\mu\mu}}
+\newcommand{\exx}{e_{x y}}
+\newcommand{\exy}{e_{x x}}
+\newcommand{\ejk}{e_{j k}}
+\newcommand{\ejj}{e_{j j}}
+\newcommand{\ekj}{e_{k j}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 80/20 rule, Gini coefficient
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\fracsymbol}{\theta}
+\newcommand{\popfrac}{\fracsymbol_{\textnormal{pop}}}
+\newcommand{\wealthfrac}{\fracsymbol_{\textnormal{wealth}}}
+\newcommand{\ginicoefficient}{G}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Zipf, Simon's scaling
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% simon's model
+\newcommand{\simonalpha}{\rho}
+
+\newcommand{\simonrho}{\rho}
+%% \newcommand{\zipfrank}{r}
+%% \newcommand{\zipfexponent}{\alpha}
+%% \newcommand{\frequency}{f}
+\newcommand{\probsymbol}{p}
+\newcommand{\zipfrankmax}{\zipfrank_{\textnormal{max}}}
+
+
+%% rank for Zipf's law
+\newcommand{\rank}{r}
+
+%% rich gets richer model
+
+%% same as simonrho
+
+\newcommand{\zipfrank}{r}
+\newcommand{\zipfexponent}{\alpha}
+
+\newcommand{\groupnum}{n}
+
+\newcommand{\innovationrate}{\rho}
+\newcommand{\innovationratet}{\rho_{t}}
+
+\newcommand{\rgrN}{S}
+\newcommand{\Ngroups}{N}
+
+%% \newcommand{\rgrNt}[1]{\rgrN_{#1}^{\textnormal{(e)}}}
+%% \newcommand{\rgrNinit}{\rgrN^{\textnormal{(e,\textnormal{init})}}}
+\newcommand{\rgrNt}[1]{\rgrN_{#1}}
+\newcommand{\rgrNinit}{\rgrN^{\textnormal{\textnormal{init}}}}
+
+\newcommand{\grouptimestart}[1]{t_{#1}^{\textnormal{init}}}
+
+\newcommand{\groupsizet}[2]{\rgrN_{#1,#2}}
+%% \newcommand{\groupsizet}[2]{\rgrN_{#1,#2}^{\textnormal{(e)}}}
+%% \newcommand{\groupsizet}[2]{\rgrN_{#1}^{\textnormal{(e)}}(#2)}
+
+\newcommand{\groupnumt}[1]{\Ngroups^{\textnormal{(g)}}_{#1}}
+
+\newcommand{\rgrP}{P}
+\newcommand{\groupprobt}[2]{\rgrP_{#1,#2}}
+%% \newcommand{\groupprobt}[2]{\rgrP_{#1,#2}^{\textnormal{(e)}}}
+
+\newcommand{\Beta}{B}
+
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\onequarter}{\frac{1}{4}}
+
+
+%% \newcommand{\Ngroupsinit}{\Ngroups_{\textnormal{init}}}
+\newcommand{\groupnuminit}{\groupnum^{\textnormal{init}}}
+
+%% language, lexical turbulence
+
+%% language, zipf
+\newcommand{\frequency}{f}
+
+\newcommand{\frequencythreshold}{f_{\textnormal{thr}}}
+%% \newcommand{\frequencythreshold}{f_{\Asterisk}}
+
+\newcommand{\frequencyword}{f_{w;y}}
+\newcommand{\frequencymedian}[2]{f_{w;#1,#2}^{\textnormal{med}}}
+\newcommand{\frequencycut}[2]{f_{w;#1,#2}^{\textnormal{cut}}}
+
+
+\newcommand{\flux}{\phi}
+\newcommand{\fluxup}{\flux_{\textnormal{up}}}
+\newcommand{\fluxdown}{\flux_{\textnormal{down}}}
+
+\newcommand{\zipfexponentlower}{\alpha}
+\newcommand{\zipfexponentupper}{\alpha'}
+
+\newcommand{\fluxexponentlower}{\mu}
+\newcommand{\fluxexponentupper}{\mu'}
+
+\newcommand{\fluxrankexponentlower}{\nu}
+\newcommand{\fluxrankexponentupper}{\nu'}
+
+\newcommand{\breakpoint}{\textnormal{b}}
+\newcommand{\zipfbreakpoint}{\zipfrank_{\breakpoint}}
+%% \newcommand{\frequencythresholdbreakpoint}{{\frequencythreshold}_{,\textnormal{b}}}
+\newcommand{\frequencythresholdbreakpoint}{f_{\breakpoint}}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% allotaxonometry:
+%% 
+%% universal categorical data shifts
+%% 
+%% - general 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sizesymbol}{s}
+\newcommand{\numbersymbol}{N}
+\newcommand{\bigprobsymbol}{P}
+\newcommand{\bigrank}{R}
+
+\newcommand{\indexaraw}{1}
+\newcommand{\indexbraw}{2}
+
+\newcommand{\indexa}{(\indexaraw)}
+\newcommand{\indexb}{(\indexbraw)}
+\newcommand{\indexavg}{(\indexaraw\cdot\indexbraw)}
+
+\newcommand{\indexref}{\textnormal{(ref)}}
+
+\newcommand{\indexanyraw}{i}
+\newcommand{\indexany}{(\indexanyraw)}
+
+\newcommand{\measuresymbol}{\phi}
+\newcommand{\bigmeasuresymbol}{\Phi}
+
+
+\newcommand{\systemsymbol}{\Omega}
+\newcommand{\elementsymbol}{\tau}
+
+\newcommand{\elementsetsymbol}{\mathcal{T}}
+\newcommand{\elementsetsymbola}{\mathcal{T}^{\indexa}}
+\newcommand{\elementsetsymbolb}{\mathcal{T}^{\indexb}}
+\newcommand{\elementsetsymbolany}{\mathcal{T}^{\indexany}}
+
+\newcommand{\systema}{\systemsymbol^{\indexa}}
+\newcommand{\systemb}{\systemsymbol^{\indexb}}
+\newcommand{\systemavg}{\systemsymbol^{\indexavg}}
+\newcommand{\systemref}{\systemsymbol^{\indexref}}
+\newcommand{\systemany}{\systemsymbol^{\indexany}}
+
+\newcommand{\Ntypesa}{\numbersymbol_{\indexaraw}}
+\newcommand{\Ntypesb}{\numbersymbol_{\indexbraw}}
+%% \newcommand{\Ntypesa}{\numbersymbol_{\systema}}
+%% \newcommand{\Ntypesb}{\numbersymbol_{\systemb}}
+
+\newcommand{\sizea}{\sizesymbol^{\indexa}}
+\newcommand{\sizeb}{\sizesymbol^{\indexb}}
+\newcommand{\sizeany}{\sizesymbol^{\indexany}}
+
+\newcommand{\texta}{\textsymbol^{\indexa}}
+\newcommand{\textb}{\textsymbol^{\indexb}}
+\newcommand{\textany}{\textsymbol^{\indexany}}
+
+\newcommand{\numbera}{\numbersymbol^{\indexa}}
+\newcommand{\numberb}{\numbersymbol^{\indexb}}
+\newcommand{\numberany}{\numbersymbol^{\indexany}}
+
+\newcommand{\proba}{\probsymbol^{\indexa}}
+\newcommand{\probb}{\probsymbol^{\indexb}}
+\newcommand{\probavg}{\probsymbol^{\indexavg}}
+\newcommand{\probany}{\probsymbol^{\indexany}}
+
+\newcommand{\probmixedab}{\probsymbol^{(\indexaraw,\indexbraw)}}
+
+\newcommand{\measurea}{\measuresymbol^{\indexa}}
+\newcommand{\measureb}{\measuresymbol^{\indexb}}
+\newcommand{\measureavg}{\measuresymbol^{\indexavg}}
+\newcommand{\measureany}{\measuresymbol^{\indexany}}
+\newcommand{\measureref}{\bigmeasuresymbol_{\systemref}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Entropy, Divergences
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\diffsummand}{\delta\bigmeasuresymbol_{\elementsymbol}(\systemb,\systema)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% rank divergence
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rtd}[1]{D^{\textnormal{R}}_{#1}}
+\newcommand{\rtdelement}[1]{\delta D^{\textnormal{R}}_{#1,\elementsymbol}}
+
+\newcommand{\rtdhalf}{\rtd{\sfrac{1}{2}}}
+\newcommand{\rtdhalfelement}{\rtdelement{\sfrac{1}{2}}}
+
+\newcommand{\rtdalpha}{\rtd{\alpha}}
+\newcommand{\rtdalphaelement}{\rtdelement{\alpha}}
+
+%% alpha as a variable
+\newcommand{\rtdalphavar}[1]{\rtd{#1}}
+\newcommand{\rtdalphavarelement}[1]{\rtdelement{#1}}
+
+%% \newcommand{\rtdnorm}{C_{\textnormal{\bigrank}}}
+%% \newcommand{\rtdnorm}{\mathcal{N}_{\textnormal{\bigrank}}}
+%% \newcommand{\rtdnorm}{\mathcal{N}_{\bigrank_{\indexaraw,\indexbraw;\alpha}}}
+\newcommand{\rtdnorm}{\mathcal{N}_{\indexaraw,\indexbraw;\alpha}}
+\newcommand{\invrtdnorm}{\frac{1}{\rtdnorm}}
+
+\newcommand{\rtdnormalpha}[1]{\mathcal{N}_{\indexaraw,\indexbraw;#1}}
+\newcommand{\invrtdnormalpha}[1]{\frac{1}{\rtdnormalpha{#1}}}
+
+\newcommand{\rtdalphasystems}[2]{\rtdalpha(#1\,\|\,#2)}
+\newcommand{\rtdalphasystemsOmega}{\rtdalphasystems{\systemsymbol_{\indexaraw}}{\systemsymbol_{\indexbraw}}}
+\newcommand{\rtdalphasystemsRank}{\rtdalphasystems{\bigrank_{\indexaraw}}{\bigrank_{\indexbraw}}}
+\newcommand{\rtdalphasystemsRankRand}{\rtdalphasystems{\bigrank_{\indexaraw}}{\bigrank_{\indexbraw}}}
+
+\newcommand{\rtdalphavarsystems}[3]{\rtdalphavar{#1}(#2\,\|\,#3)}
+\newcommand{\rtdalphavarsystemsOmega}[1]{\rtdalphavarsystems{#1}{\systemsymbol_{\indexaraw}}{\systemsymbol_{\indexbraw}}}
+\newcommand{\rtdalphavarsystemsRank}[1]{\rtdalphavarsystems{#1}{\bigrank_{\indexaraw}}{\bigrank_{\indexbraw}}}
+
+\newcommand{\rtdalphavarsystemsRankRand}[1]{\rtdalphavarsystems{#1; \textnormal{rand}}
+   {\bigrank_{\indexaraw}}
+   {\bigrank_{\indexbraw}}}
+
+%% \newcommand{\rtdalphavarsystemsRankRand}[1]{D^{\textnormal{R,rand}}_{#1}
+%%  (\bigrank_{\indexaraw}\,\|\,\bigrank_{\indexbraw})}
+
+%% merged systems, ordering of contributions for rank probability
+\newcommand{\bigrankordering}{\bigrank_{\indexaraw,\indexbraw;\alpha}}
+\newcommand{\bigrankorderingalpha}[1]{\bigrank_{\indexaraw,\indexbraw;#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% probability divergence
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\probdiv}[1]{D^{\textnormal{P}}_{#1}}
+\newcommand{\probdivelement}[1]{D^{\textnormal{P}}_{#1,\elementsymbol}}
+
+\newcommand{\probdivhalf}{\probdiv{\sfrac{1}{2}}}
+\newcommand{\probdivhalfelement}{\probdivelement{\sfrac{1}{2}}}
+
+\newcommand{\probdivalpha}{\probdiv{\alpha}}
+\newcommand{\probdivalphaelement}{\probdivelement{\alpha}}
+
+%% normalization factor
+
+\newcommand{\ptdnorm}{\mathcal{N}_{\indexaraw,\indexbraw;\alpha}^{\textnormal{P}}}
+\newcommand{\invptdnorm}{\frac{1}{\ptdnorm}}
+
+\newcommand{\ptdnormalpha}[1]{\mathcal{N}_{\indexaraw,\indexbraw;#1}^{\textnormal{P}}}
+\newcommand{\invptdnormalpha}[1]{\frac{1}{\ptdnormalpha{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% generalized entropy divergence
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\gendiv}[1]{D^{\textnormal{AS2}}_{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% jensen-shannon divergence
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\jsd}{D^{\textnormal{JS}}}
+\newcommand{\kld}{D^{\textnormal{KL}}}
+
+\newcommand{\jsdelement}{D^{\textnormal{JS},\elementsymbol}}
+\newcommand{\kldelement}{D^{\textnormal{KL},\elementsymbol}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% universal categorical data shifts
+%% texts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\textsymbol}{T}
+
+\newcommand{\logtwo}{\textnormal{log}_2}
+
+

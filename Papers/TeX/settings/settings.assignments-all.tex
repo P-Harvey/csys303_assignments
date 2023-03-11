@@ -1,0 +1,119 @@
+\newboolean{solutionsboolean}
+\newboolean{videoboolean}
+
+\urlstyle{same}
+
+\usepackage{comment}
+
+\usepackage[usenames]{color}
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\newcommand{\tcn}[2]{\color[named]{#1}{#2}}
+\definecolor{olivegreen}{rgb}{0.33333,.41961,0.18431}
+\definecolor{forestgreen}{rgb}{0.13333,.5451,0.13333}
+\definecolor{lightgrey}{rgb}{0.7,0.7,0.7}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
+\definecolor{verydarkgrey}{rgb}{0.1,0.1,0.1}
+
+\usepackage{etoolbox}
+
+
+\newcommand{\solutionstart}{\textbf{Solution:}}
+\newcommand{\solutionend}{\hfill $\square$}
+
+\usepackage{environ}
+
+\NewEnviron{solution}{
+  %% $\ulcorner$ \hfill $\urcorner$ \\
+
+  \ifthenelse{\boolean{solutionsboolean}}{
+    \normalcolor
+
+    \solutionstart
+    % \marginpar{\rule[-17.5mm]{1pt}{20mm}}
+    \BODY
+    \solutionend
+  }
+
+%%  \color{darkgrey}
+  % $\llcorner$ \hfill $\lrcorner$ 
+  % $\boxplus$
+}[]
+
+
+
+
+\usepackage{marvosym}
+
+\newcommand{\pleasesubmitprojectdraft}{
+  \ifthenelse{\not\boolean{solutionsboolean}}{
+    {\small
+    \textbf{Please submit your project's current draft}
+    in pdf format via Blackboard by the same time specified for this assignment.
+    For teams, please list all team member names clearly at the start.
+%%     Please use this file name format (all lowercase after CSYS):\\
+%%     \texttt{{\fullcoursenumbertext}project-\$firstname-\$lastname-YYYY-MM-DD.pdf}
+%%     as in 
+%%     \texttt{{\fullcoursenumbertext}project-lisa-simpson-1989-12-17.pdf}
+%%     where the date is the date of submission (and not, say, your birthdate).
+    }
+    \medskip
+
+    \hrule
+
+    \medskip
+  }{}
+}
+
+\usepackage{cancel}
+\usepackage{verbatim}
+
+
+\newcommand{\alert}[1]{#1}
+\newcommand{\alertb}[1]{#1}
+
+
+\newcommand{\tfline}{\underline{\mbox{\qquad \ }}.}
+
+
+\newcommand{\veck}{\vec{k}}
+%% \newcommand{\veck}{\mathbf{k}}
+
+\newcommand{\infprob}{B}
+\newcommand{\gainratio}{\mathbf{R}}
+
+\newcommand{\undmark}{\rm und}
+\newcommand{\dirmark}{\rm dir}
+
+\newcommand{\bidmark}{\rm u}
+\newcommand{\inmark}{\rm i}
+\newcommand{\outmark}{\rm o}
+
+\newcommand{\kin}{k_{\inmark}}
+\newcommand{\kout}{k_{\outmark}}
+\newcommand{\kbid}{k_{\bidmark}}
+
+\newcommand{\jin}{j_{\inmark}}
+\newcommand{\jout}{j_{\outmark}}
+\newcommand{\jbid}{j_{\bidmark}}
+
+
+\newcommand{\Probdir}{P^{(\rm \dirmark)}}
+
+\newcommand{\Probin}{P^{(\rm \inmark)}}
+\newcommand{\Probout}{P^{(\rm \outmark)}}
+\newcommand{\Probbid}{P^{(\rm \bidmark)}}
+
+\newcommand{\nodetype}{\kin,\kout,\kbid}
+
+\newcommand{\edgetype}{\veck\, |\, \veck'}
+\newcommand{\edgetypescript}{\veck\veck'}
+
+%% \newcommand{\probfc}{\chi}
+\newcommand{\probfc}{Q}
+
+%% \newcommand{\edgetype}{\vec{k};\vec{\alpha}\, |\, \vec{k}';\vec{\alpha}'}
+%% \newcommand{\edgetypescript}{\vec{k}\vec{\alpha}\vec{k}'\vec{\alpha}'}
+
+\newcommand{\indrspfn}{h}
+\newcommand{\rspfn}{H}

@@ -1,0 +1,327 @@
+\textbf{Name:} \\
+
+\medskip
+
+\textbf{Conspirators:} 
+
+\medskip
+\medskip
+
+\hrule
+
+\medskip
+
+
+%% For 2023:
+%% Could clean up the central limit theorem calc
+%% Penguins works on the line before
+
+
+%% HELOOOOOO
+%% Move power law questions forward ...
+
+%% add question on matrices and random walks
+
+%% thanks. a few comments from the department:
+%% problem 2a, the second line of the third equation isn't doing anything.
+%% problem 3a, you reference assignment 4. i think you mean problem 1
+%% problem 3c, a good observation from zieba: the two different scaling regimes accounts for n1 estimate being too high, while
+%% n2 and n3 too low, perhaps?
+
+%% delete MAD question to 
+%% give them a form to aim for
+
+%% add question for making tree maps
+%% code, matlab
+%% produce little videos?
+%%
+
+
+%% For Q1--3, you'll explore random walks,
+%% touching the Central Limit Theorem and
+%% the first return problem.
+%% There and back again.
+
+
+%% \pleasesubmitprojectdraft
+
+%% \assignmentsonly{\pleasesubmitprojectdraft}
+
+Notes for Baby Name analysis:
+
+\begin{itemize}
+\item
+  You will have the data sets on hand from the previous assignment.
+  %%  \item 
+  %%    Matlab. Yes. You will need to install it. Please connect with Assistant to the Regional Deliverator.
+\item 
+  Unix systems will work (Linux, the Apple things, etc.). Windows may not (alternative given below).
+\item 
+  As is, you will need the command epstopdf. Please install if not on deck already.
+\end{itemize}
+
+
+\begin{enumerate}
+
+\item
+
+  Plot time series for the rank
+  of these baby names in the US over all years in the census data:
+
+  \begin{itemize}
+  \item 
+    Shirley.
+  \item
+    Desmond.
+  \item
+    Madison.
+  \item
+    Aiden.
+  \item
+    A name of your choice.
+  \end{itemize}
+
+  Note that if you plotted relative frequency rather than rank,
+  you would need to know (or estimate) the overall number of babies born.
+  Ranks are both easy simple to work with and easy to understand.
+
+%% Not using frequency 
+%%  For each name, you will need to the frequency for each year, as well
+  %%  as that year's total number of names (girls or boys).
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item (3 + 3 + 3 + 3)
+
+  Only this question requires The Laboratory of the Matrix (Matlab).
+  See alternative below if you cannot get the allotaxonometer to work on your system.
+
+  Generate allotaxonographs comparing the following four pairs:
+
+  \begin{enumerate}
+  \item
+    Baby girl names in 1952 versus baby girl names in 2002.
+  \item
+    Baby boy names in 1952 versus baby boy names in 2002.
+  \item
+    Baby girl names in 1952 versus baby boy names in 1952.
+  \item
+    Baby girl names in 2002 versus baby boy names in 2002.
+  \end{enumerate}
+
+  Use rank-turbulence divergence with $\alpha = 0$ and $\alpha = \infty$.
+
+  Online appendices for main papers is
+  here:
+  \href{http://compstorylab.org/allotaxonometry/}{http://compstorylab.org/allotaxonometry/}.
+
+  The gitlab repository:
+
+  \url{https://gitlab.com/compstorylab/allotaxonometer/}
+
+  For example baby names code, look through the main script here:
+  
+  \url{https://gitlab.com/compstorylab/allotaxonometer/figures/babynames/figures/}
+
+  See if you can get this script to run as is.
+
+  Contains overview, examples, links to papers, figure-making code, etc.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+  \textbf{Alternative:}
+
+  Using rank-turbulence divergence with $\alpha = 0$ and $\infty$,
+  list the top 30 contributing baby names for the four comparisons listed above.
+  
+  Indicate which year each contributing baby name comes from in parentheses.
+
+  For ordering, you do not need to compute RTD in full but rather just the core structure:
+  \begin{equation}
+  \left\lvert
+  \frac{1}{\left[\zipfrank_{\elementsymbol,\indexaraw}\right]^{\alpha}}
+  -
+  \frac{1}{\left[\zipfrank_{\elementsymbol,\indexbraw}\right]^{\alpha}}
+  \right\lvert.
+  \label{eq:pocs-asst05.allotax-core}
+  \end{equation}
+  Recall that for $\alpha=0$ and $\alpha=\infty$, the essential core structure becomes:
+  \begin{equation}
+    \left\lvert
+    \ln
+    \frac{\zipfrank_{\elementsymbol,\indexaraw}
+    }{\zipfrank_{\elementsymbol,\indexbraw}}
+    \right\rvert
+    \
+    \mbox{and}
+    \
+    \max_{\elementsymbol}
+    \left\{
+    \frac{
+      1
+    }{
+      \zipfrank_{\elementsymbol,\indexaraw}
+    },
+    \frac{
+      1
+    }{
+      \zipfrank_{\elementsymbol,\indexbraw}
+    }
+    \right\}.
+    \label{eq:pocs-asst05.allotax-core-alpha-0-and-infty}
+  \end{equation}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item 
+  Everyday random walks and the Central Limit Theorem:
+
+  Show that the observation
+  that the number of discrete random walks of duration
+  $t=2n$ starting at $x_{0}=0$ and ending at displacement $x_{2n} = 2k$ where
+  $k \in \{0, \pm 1, \pm 2, \ldots, \pm n\}$
+  is
+  $$
+  N(0,2k,2n)
+  =
+  \binom{2n}{n+k}
+  =
+  \binom{2n}{n-k}
+  $$
+  leads to a Gaussian distribution for large $t=2n$:
+  $$
+  \mathbf{Pr}(x_{t} \equiv x) 
+  \simeq
+  \frac{1}{\sqrt{2\pi t}}
+  e^{-\frac{x^2}{2t}}.
+  $$
+  Please note that $k \ll n$.
+
+  \wordwikilink{http://en.wikipedia.org/wiki/Stirling's_approximation}{Stirling's sterling approximation}
+  will prove most helpful.
+
+  \textbf{Hint:}
+  You should be able to reach this form:
+  $$
+  \frac{
+    \mbox{Some stuff not involving penguins}
+  }{
+    \mbox{Some other penguin-free stuff} \times
+    (1-k^2/n^2)^{n+1/2} 
+    (1+k/n)^{k}(1-k/n)^{-k}
+  }.
+  $$
+  Lots of sneakiness here.  You'll want to examine
+  the natural log of the piece shown above, and see
+  how it behaves for large $n$.  
+
+  You may very well need to use
+  the Taylor expansion $\ln(1+z) \simeq z$.
+  
+  Exponentiate and carry on.
+
+  \textbf{Tip:}
+  If at any point penguins appear in your expression, 
+  you're in real trouble.  Get some fresh air and start again.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+
+\item 
+
+  From lectures, show that the number of distinct 
+  1-$d$ random walk that start at $x=i$ and end 
+  at $x=j$ after $t$ time steps is
+  $$
+  N(i,j,t) = \binom{t}{(t+j-i)/2}. 
+  $$
+  Assume that $j$ is reachable from $i$ after $t$ time steps.
+
+  \videohint{daSIYz-0U3E}{Counting random walks}
+
+  %% Video hint: \url{http://www.youtube.com/watch?v=daSIYz-0U3E}.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item 
+
+  \textit{Discrete random walks:}
+
+  In class, we argued that
+  the number of random walks returning
+  to the origin for the first time
+  after $2n$ time steps is given by
+  $$
+  N_{\rm first\ return}(2n) 
+  =
+  N_{\rm fr}(2n) 
+  = 
+  N(1,1,2n-2) - N(-1,1,2n-2)
+  $$
+  where
+  $$ 
+  N(i,j,t) = \binom{t}{(t+j-i)/2}. 
+  $$
+
+  Find the leading order term for $N_{\rm fr}(2n)$
+  as $n \rightarrow \infty$.
+
+  Two-step approach:
+  \begin{enumerate}
+  \item 
+    Combine the terms to form a single fraction,
+  \item
+    and then again use 
+    \wordwikilink{http://en.wikipedia.org/wiki/Stirling's_approximation}{Stirling's bonza approximation}.
+  \end{enumerate}
+
+  If you enjoy this sort of thing, you may like to explore
+  the same problem for random walks in higher dimensions.  
+  Seek out George P\'{o}lya.
+
+  And we are connecting to much other good stuff in combinatorics; more to 
+  come in the solutions.
+
+  %% \#toomuchexcitement
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+  
+
+
+  
+
+
+\end{enumerate}
+
+

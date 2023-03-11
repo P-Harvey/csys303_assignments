@@ -1,0 +1,240 @@
+\textbf{Name:} \\
+
+\medskip
+
+\textbf{Conspirators:} 
+
+\medskip
+\medskip
+
+\hrule
+
+\medskip
+
+
+%% change x_min and x_max
+
+%% for next time:
+%% Also: change data set so students
+%% have to create N_k in the first place
+%%
+%% Nkvals, kvals
+
+%% Warning !!!
+
+%% \assignmentsonly{\pleasesubmitprojectdraft}
+
+\ifthenelse{\not\boolean{solutionsboolean}}{
+
+  All about power law size distributions (basic computations and some real life data
+  from Google).
+
+  Note 1: Please do not use Mathematica, etc. for any symbolic work---you can do all of
+  these calculations by hand. Yes you can!
+  
+  Note 2: Otherwise, use whatever tools you like for the data analysis.
+
+
+}
+
+\begin{enumerate}
+
+  %% compare mean calculation for exponential
+  %% and gaussian
+  %% assignment 1?
+
+  %% add boy born on tuesday questions
+
+  %% next year:
+  %% Maybe for Assignemnt 1?
+  %% Plot $\gamma$ as a function of cut off.
+  %% give the cut offs
+
+  %% scaling collapse analysis
+
+\item 
+
+  As in assignment 1, consider a random variable $X$ with 
+  a probability distribution given by
+  $$
+  P(x) = c x^{-\gamma},
+  $$
+  where $c$ is a normalization constant you determined in the first assignment,
+  and $0 < a \le x \le b $.
+  ($a$ and $b$ are the lower and upper cutoffs respectively.)
+  Assume that $\gamma > 1$.
+
+  Note: For all answers you obtain for the questions below,
+  replace $c$ by the expression you obtained in the first assignment, and simplify
+  expressions as much as possible.
+  
+  Compute the $n$th moment of $X$ which is in general
+  defined as:
+  $$
+  \tavg{x^n}
+  = 
+  \int_{a}^{b} x^n P(x) \postdee{x}
+  $$
+
+  %% (Note: This is what Wikipedia rather rudely calls the 
+  %%  ``raw moment'' or ``crude moment.'')
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item
+
+  In the limit $b \rightarrow \infty$, how does the $n$th moment
+  behave as a function of $\gamma$?
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+\item
+  \begin{enumerate}
+  \item 
+    Find $\sigma$, the standard deviation of $X$
+    for finite $a$ and $b$, then obtain the limiting form
+    of $\sigma$ as $b \rightarrow \infty$,
+    noting any
+    constraints we must place on $\gamma$
+    for the mean and the standard deviation
+    to remain finite
+    as $b \rightarrow \infty$.
+
+    Some help: the form of $\sigma^2$ as $b \rightarrow \infty$
+    should reduce to
+    $$
+    = 
+    \frac{(\gamma-c_1)}
+         {(\gamma-c_2)(\gamma-c_3)^2}
+         a^{2}
+         $$
+         where $c_1$, $c_2$, and $c_3$ are
+         simple, meaningful constants to be determined (by you).
+       \item
+         For the case of $b \rightarrow \infty$,
+         how does $\sigma$ behave as a function of $\gamma$,
+         given the constraints you have already placed on $\gamma$?
+         More specifically, how does $\sigma$ behave as $\gamma$
+         reaches the ends of its allowable range?
+  \end{enumerate}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+\item
+  Drawing on a Google vocabulary data set\ifthenelse{\not\boolean{solutionsboolean}}{\ (see below for links)}:
+  \begin{enumerate}
+  \item 
+    Plot the frequency distribution $N_k$ representing 
+    how many distinct words appear
+    $k$ times in this particular corpus as
+    a function of $k$.
+  \item
+    Repeat the same plot in log-log space (using base 10, i.e.,
+    plot $\log_{10} N_k$ as a function of $\log_{10} k$).
+  \end{enumerate}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+\item
+  Using your eyeballs, indicate  over what range power-law scaling appears to hold
+  and, 
+  estimate, using least squares regression over this range, 
+  the exponent in the fit
+  $N_k \sim k^{-\gamma}$ (we'll return to this estimate later).
+
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+
+\item
+  Compute the mean and standard deviation for the entire sample
+  (not just for the restricted range you used in the preceding question).
+  Based on your answers to the following questions and material from the lectures,
+  do these values for the mean and
+  standard deviation make sense given your estimate of $\gamma$?
+
+  Hint: note that we calculate the mean and variance
+  from the distribution $N_k$; a common mistake is to
+  treat the distribution as the set of samples.
+  Another routine misstep is to average numbers
+  in log space (oops!) and to average only
+  over the range of $k$ values you used to
+  estimate $\gamma$.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+  \ifthenelse{\not\boolean{solutionsboolean}}{
+    The data for $N_k$ and $k$ (links are clickable):
+    \begin{itemize}
+    \item
+      Compressed text file (first column = $k$, second column = $N_k$):
+      \href{\coursewebsite/docs/vocab\_cs\_mod.txt.gz}{\coursewebsitetext/docs/vocab\_cs\_mod.txt.gz}
+    \item
+      Uncompressed text file (first column = $k$, second column = $N_k$):
+      \href{\coursewebsite/docs/vocab\_cs\_mod.txt}{\coursewebsitetext/docs/vocab\_cs\_mod.txt}
+    \item 
+      Matlab file (\texttt{wordfreqs} = $k$, \texttt{counts} = $N_k$):
+      \href{\coursewebsite/docs/google\_vocab\_freqs.mat}{\coursewebsitetext/docs/google\_vocab\_freqs.mat}
+    \end{itemize}
+
+    The raw frequencies of individual words:
+    \begin{itemize}
+    \item
+      \href{\coursewebsite/docs/google\_vocab\_rawwordfreqs.txt.gz}{\coursewebsitetext/docs/google\_vocab\_rawwordfreqs.txt.gz}
+    \item
+      \href{\coursewebsite/docs/google\_vocab\_rawwordfreqs.txt}{\coursewebsitetext/docs/google\_vocab\_rawwordfreqs.txt}
+    \item 
+      \href{\coursewebsite/docs/google\_vocab\_rawwordfreqs.mat}{\coursewebsitetext/docs/google\_vocab\_rawwordfreqs.mat}
+    \end{itemize}
+
+    \textit{
+      Note: `words' here include any separate textual object including
+      numbers, websites, html markup, etc.
+    }
+    
+    \textit{
+      Note: To keep the file to a reasonable size,
+      the minimum number of appearances is $k_{\min} = 200$ 
+      corresponding to $N_{200}=48030$ distinct words
+      that each appear 200 times.
+    }
+  }
+
+
+
+\end{enumerate}

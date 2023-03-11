@@ -1,0 +1,266 @@
+\textbf{Name:} \\
+
+\medskip
+
+\textbf{Conspirators:} 
+
+\medskip
+\medskip
+
+\hrule
+
+\medskip
+
+
+\begin{enumerate}
+
+\item (3 + 3)
+
+  Repeat the first question from the previous assignment
+  changed from
+  $\gamma = 5/2$ to $\gamma = 3/2$.
+
+  Now $1 < \gamma < 2$ so
+  we should see a very different behavior.
+
+%%  You should be able to reuse everything you set up for Assignment 4.
+
+  Here's the question reprinted with $\gamma$ switched to 3/2:
+
+  For $\gamma = 3/2$, generate $n=1000$ sets each of 
+  $N=10$, $10^2$, $10^3$, $10^4$, $10^5$, and $10^6$ samples,
+  using $P_k = c k^{-3/2}$ with $k=1, 2, 3, \ldots$ 
+
+  How do we computationally sample from a discrete probability
+  distribution? 
+
+  Hint: You can use a continuum approximation to speed things up.
+  In fact, taking the exact continuum version from the first two
+  assignments will work.
+
+  \begin{enumerate}
+  \item 
+    For each value of sample size $N$, sequentially create $n$ sets of $N$ samples.
+    For each set,
+    determine and record the maximum value of the set's $N$ samples.
+    (You can discard each set once you have found the maximum sample.)
+
+    You should have $k_{\textnormal{max},i}$ for $i=1, 2, \ldots, n$ where $i$
+    is the set number.
+    For each $N$, plot the $n$ values of $k_{\textnormal{max},i}$ as a function of $i$.
+
+    If you think of $n$ as time $t$, you will be plotting a kind of time series.
+
+    These plots should give a sense
+    of the unevenness of the maximum value of $k$, 
+    a feature of power-law size distributions.
+    
+  \item 
+    Now find the average
+    maximum value
+    $\tavg_{i}{k_{\textnormal{max},i}}$
+    for each $N$.
+
+    The steps again here are:\\
+    1. Sample $N$ times from $P_{k}$;\\
+    2. Determine the maximum of the sample, $k_{\textnormal{max}}$;\\
+    3. Repeat steps 1 and 2 a total $n$ times and take the average of
+    the $n$ values of $k_{\textnormal{max}}$ you have obtained.
+    
+    Plot $\tavg{k_{\max}}$ as a function of $N$
+    on double logarithmic axes,
+    and calculate the scaling using least squares.
+    Report error estimates.
+
+    Does your scaling match up with your theoretical
+    estimate for $\gamma = 3/2$?
+
+  \end{enumerate}
+
+  How to sample from your power law distribution (and similar kinds of beasts):
+
+  We now turn our problem of randomly selecting from this distribution
+  into randomly selecting from the uniform distribution. 
+  After playing around a little, $k=10^6$ seems like a good
+  upper limit for the number of samples we're talking about.
+
+  Using Matlab (or some ghastly alternative), we create
+  a cdf for $P_{k}$ for $k=1, 2, \ldots, 10^6$ and one
+  final entry $k > 10^6$ (for which the cdf will be 1).
+
+  We generate a random number $x$ and find the value of $k$
+  for which the cdf is the first to meet or exceed $x$.
+  This gives us our sample $k$ according to $P_k$ and
+  we repeat as needed.
+  We would use the exactly normalized $P_k = \frac{1}{\zeta(3/2)} k^{-3/2}$ where $\zeta$ is
+  the Riemann zeta function.
+
+  Now, we can use a quick and dirty method by approximating $P_k$
+  with a continuous function $P(z) = (\gamma-1) z^{-\gamma}$ for $z \ge 1$
+  (we have used the normalization coefficient found in assignment 1 for
+  $a=1$ and $b=\infty$).  Writing $F(z)$ as the cdf for $P(z)$,
+  we have $F(z) = 1-z^{-(\gamma-1)} = 1-z^{-1/2}$.  Inverting,
+  we obtain $z = [1-F(z)]^{-2}$.  We replace $F(z)$ with our
+  random number $x$ and round the value of $z$ to finally get
+  an estimate of $k$.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+\item
+  
+  The 1-$d$ theoretical percolation problem:
+
+  Consider an infinite 1-$d$ lattice forest with 
+  a tree present at any site with probability $p$.
+
+  \begin{enumerate}
+  \item 
+    Find the distribution of forest sizes
+    as a function of $p$.
+    Do this by moving along the 1-d world and
+    figuring out 
+    the probability
+    that any forest you enter will extend for a total length $\ell$.
+  \item 
+    Find $p_c$, the critical probability for
+    which a giant component exists.
+
+    Hint: One way to find critical points is
+    to determine when certain average quantities explode.
+    Compute $\tavg{l}$ and find $p$ such that this
+    expression goes boom (if it does).
+  \end{enumerate}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item
+  %% square lattice bond percolation?
+
+  Show analytically that the critical probability for
+  site percolation on a triangular lattice
+  is $p_c$ = 1/2.
+
+  \videohint{JlkbU5U7QqU}{Real-space renormalization gets it done.}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item (3 + 3)
+
+  \textbf{Coding, it's what's for breakfast:}
+
+  \begin{enumerate}
+  \item 
+    Percolation in two dimensions (2-$d$) on a simple square lattice provides a classic, nutritious 
+    example of a phase transition.
+
+    Your mission, whether or not you choose to accept it,
+    is to code up and analyse the $L$ by $L$ square lattice percolation model
+    for varying $L$.
+
+    Take $L$ = 20, 50, 100, 200, 500, and 1000.
+    
+    (Go higher if you feel $L$ = 1000 is for mere mortals.)
+
+    (Go lower if your code explodes.)
+
+    Let's continue with the tree obsession.
+    A site has a tree with probability $p$,
+    and a sheep grazing on what's left of
+    a tree with probability $1-p$.
+
+    Forests are defined as any connected component
+    of trees bordered by sheep, where connections
+    are possible with a site's four nearest neighbors
+    on a lattice.
+
+    Each square lattice is to be considered as a landscape
+    on which forests and sheep co-exist.
+
+    Do not bagelize (or doughnutize) the landscape (no periodic
+    boundary conditions---boundaries are boundaries).
+
+    (Note: this set up is called site percolation.  Bond percolation
+    is the alternate case when all links between neighboring sites exist
+    with probability $p$.)
+
+    Steps:
+    \begin{enumerate}
+    \item 
+      For each $L$, run $N_{\rm tests}$=100 tests for occupation probability $p$
+      moving from 0 to 1 in increments of $10^{-2}$.
+      (As for $L$, you may use a smaller or larger increment depending on how
+      things go.)
+    \item 
+      Determine the fractional size of the largest connected forest
+      for each of the $N_{\rm tests}$, and find the average of these,
+      $S_{\rm avg}$.
+    \item 
+      On a single figure, for each $L$, plot the average $S_{\rm avg}$ as a function of $p$.
+    \end{enumerate}
+
+  \item
+    Comment on how $S_{\rm avg}(p;N)$ changes as a function of $L$
+    and estimate the critical probability $p_c$ (the percolation threshold).
+  \end{enumerate}
+
+  For the few Matlabbers,
+  a helpful reuse of code (intended for black and white image analysis): 
+  You can use Matlab's bwconncomp to find 
+  the sizes of components.  Very nice.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+\item (3 + 3)
+
+  \begin{enumerate}
+  \item 
+    Using your model from the previous question and your
+    estimate of $p_c$, plot the distribution of forest sizes
+    (meaning cluster sizes)
+    for $p \simeq p_c$ for the largest $L$ your code
+    and psychological makeup can withstand.
+    (You can average the distribution over separate simulations.)
+
+    Comment on what kind of distribution you find.
+
+  \item
+    Repeat the above for $p=p_c/2$ and $p=p_c + (1-p_c)/2$,
+    i.e., well below and well above $p_c$.
+
+    Produce plots for both cases,
+    and again, comment on what you find.
+  \end{enumerate}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+
+
+\end{enumerate}

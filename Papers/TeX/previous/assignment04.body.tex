@@ -1,0 +1,228 @@
+\textbf{Name:} \\
+
+\medskip
+
+\textbf{Conspirators:} 
+
+\medskip
+\medskip
+
+\hrule
+
+\medskip
+
+
+%% \assignmentsonly{\pleasesubmitprojectdraft}
+%%
+%% \medskip
+%% \hrule
+
+For Q1--5,
+you'll further explore the Google data set
+you examined earlier.
+
+Q6 prepares for allotaxonometry.
+
+%% For Q6--8, you'll explore random walks,
+%% touching the Central Limit Theorem and
+%% the first return problem.
+%% There and back again.
+
+
+%% For Q6--7, you'll examine how the largest
+%$ sample size grows with the number of samples.
+
+
+\begin{enumerate}
+
+
+\item 
+  Plot the complementary cumulative distribution function
+  (CCDF).
+
+%%  \cliplink{06f}
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item 
+  Using standard linear regression,
+  measure the exponent $\gamma-1$
+  where $\gamma$ is the exponent of
+  the underlying distribution function.
+  Identify and use a range
+  of frequencies for which scaling
+  appears consistent.
+  Report the 95\% confidence interval
+  for your estimate.
+
+  You will find two scaling regimes---please examine them both.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item
+  Size-rank plots:
+  
+  Using the alternate data set providing the raw word frequencies,
+  plot word frequency as a function of rank
+  in the manner of Zipf.
+
+  \textbf{Hint:} you will not be able to plot all points
+  (there are close to 14 million)
+  so think about how to plot a subsample that still
+  shows the full form.
+  
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item 
+  Using
+  standard linear regression,
+  measure $\alpha$, Zipf's exponent.
+  Report the 95\% confidence interval
+  for your estimate.
+
+  Again, you will find two regimes.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item 
+  For each scaling regime, write down how $\gamma$ and $\alpha$ are related (per lectures)
+  and check how this expression works
+  for your estimates here.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+
+ 
+\item (3 + 3) 
+  \textbf{Baby name frequencies in the US:}
+
+  Note: We will use this data set again in the next assignment.
+
+  \begin{enumerate}
+  \item 
+    Plot the Complementary Cumulative Frequency Distributions and Size-rank plots (Zipf's law)
+    for the following:
+
+    \begin{enumerate}
+    \item
+      Baby girl names in 1952.
+    \item
+      Baby boy names in 1952.
+    \item
+      Baby girl names in 2002.
+    \item
+      Baby boy names in 2002.
+    \end{enumerate}
+
+    Note that you will have counts that will make the Zipf distribution
+    easy to plot straight away.
+
+    From these counts,
+    you will have to create
+    the distributions 
+    $N_{k}$ and $N_{\ge k}$.
+
+  \item
+
+    As you did for the Google data set, fit regression lines
+    and report values of
+    $\gamma$
+    and
+    the Zipf exponent $\alpha$.
+
+    BUT: Only fit lines if fitting lines make sense!
+
+    You may only have one region of scaling or zero.
+
+  \end{enumerate}
+
+  We will revisit these distributions in following assignments.
+
+  \textbf{Download:}
+
+  Data for 1880 through 2018:
+
+  \wordwikilink{http://pdodds.w3.uvm.edu/permanent-share/pocs-babynames.zip}{http://pdodds.w3.uvm.edu/permanent-share/pocs-babynames.zip} (8.0M)
+
+  \textbf{Files:}
+  
+  For each year, Zipf distribution of counts are stored in:
+  \texttt{names-girlsYYYY.txt}
+  and 
+  \texttt{names-boyYYYY.txt}.
+
+  For normalization to estimate rates,
+  total number of births per year: \texttt{births\_per\_year.txt}.
+  For this question, you do not need to determine rates, and this
+  file is included for completeness.
+
+  For privacy, names with less than 5 counts are excluded.
+
+  The rare are legion and, for baby names, hidden.
+
+  \textbf{Notes:}
+
+  You should be able to re-use scripts from previous assignments.
+
+  Data is based on names registered through Social Security within the US.
+
+  \textbf{Source:}
+
+  Baby name dataset available here:\\
+  \wordwikilink{https://catalog.data.gov/dataset?tags=baby-names}{https://catalog.data.gov/dataset?tags=baby-names}.
+  Separate dataset for total births available here:\\
+  \wordwikilink{https://www.ssa.gov/oact/babynames/numberUSbirths.html}{https://ssa.gov/oact/babynames/numberUSbirths.html}.
+
+  
+   \solutionstart
+
+   %% solution goes here
+
+   \solutionend
+
+\item
+  
+  Install Matlab on your machine of choice.
+
+  We'll use Matlab in the next assignment.
+
+  3 points for just getting this done and reporting faithfully that you did succeed.
+
+  If you already have Matlab, then this is a freebie.
+
+  For what we're going to do, there will be some roadblocks if you are not using a UNIX machine.
+
+  Linux machines will work, Apple/Mac will work (because Mac OS is UNIX underneath),
+  but Windows will present some problems.
+
+  Note: For future happiness, we encourage students to use Python in general. Maybe R.
+  Julia too.  We're using a complicated piece of machinery that only exists fully
+  realized in Matlab.
+
+\end{enumerate}
+
